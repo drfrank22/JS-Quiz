@@ -10,8 +10,9 @@ let currentQuestion;
 var questionElement = document.querySelector("#questions");
 var answersElement = document.querySelector("#answers");
 var sec = 60;
-// var time = setInterval(myTimer, 1000);
+var score = document.querySelector("#score");
 var timer = document.querySelector("#timer");
+var gameScore = 0
 
 // Event Listeners for Start and Next Buttons
 startButton.addEventListener("click", startQuiz);
@@ -19,6 +20,7 @@ nextButton.addEventListener("click", () => {
     currentQuestion++
     nextQuestion()
 });
+logScoreButton.addEventListener("click", logScore);
 
 // Start Quiz function to get started.
 function startQuiz () {
@@ -72,20 +74,30 @@ function chooseAnswer (e) {
   }
 };
 
+var correct = true;
+
 function setStatus (element, correct) {
-
+    if (correct) {
+        gameScore++;
+        score.innerText = "Score " + gameScore;   
+    }
+    else {
+        gameScore--;
+        score.innerText = "Score " + gameScore;
+    }
 };
-
-// var sec = 15;
-// var time = setInterval(myTimer, 1000);
 
 function myTimer() {
     timer.innerText = sec + "sec left";
     sec--;
     if (sec == -1) {
-        clearInterval(time);
+        clearInterval(myTimer);
         alert("Time out!! :(");
     }
+}
+
+function logScore () {
+
 }
 
 // Question Variables
