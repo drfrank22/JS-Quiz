@@ -1,7 +1,24 @@
 // Javascript
 
-// Click Event Listener to Start Quiz
+// Variables
+var startButton = document.querySelector("#start-button");
+var nextButton = document.querySelector("#next-button");
+var logScoreButton = document.querySelector("#score-button");
+var hiddenElements = document.querySelector(".hide");
+var nextButton = document.querySelector("#next-button");
+let currentQuestion;
+var questionElement = document.querySelector("#questions");
+var answersElement = document.querySelector("#answers");
+var sec = 60;
+// var time = setInterval(myTimer, 1000);
+var timer = document.querySelector("#timer");
+
+// Event Listeners for Start and Next Buttons
 startButton.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", () => {
+    currentQuestion++
+    nextQuestion()
+});
 
 // Start Quiz function to get started.
 function startQuiz () {
@@ -11,10 +28,8 @@ hiddenElements.classList.remove("hide");
 questions;
 currentQuestion = 0;
 nextQuestion();
-// nextButton.classList.remove("hide");
+setInterval(myTimer, 1000)
 }
-
-
 
 function nextQuestion () {
     resetAnswers ();
@@ -43,8 +58,6 @@ function populateQuestion (questions) {
     });
 };
 
-
-
 function chooseAnswer (e) {
     var selectedAnswer = e.target
     var correct = selectedAnswer.dataset.correct
@@ -52,26 +65,28 @@ function chooseAnswer (e) {
     Array.from(answersElement.children).forEach(button => {
     setStatus(button, button.dataset.correct)
   })
-//   if (questions.length > currentQuestion + 1) {
-//     nextButton.classList.remove('hide')
-//   } else {
-//     startButton.innerText = 'Restart'
-//     startButton.classList.remove('hide')
-//   }
+  if (questions.length > currentQuestion + 1) {
+    nextButton.classList.remove('hide')
+  } else {
+    logScoreButton.classList.remove('hide')
+  }
 };
 
-function setStatus () {
+function setStatus (element, correct) {
 
+};
+
+// var sec = 15;
+// var time = setInterval(myTimer, 1000);
+
+function myTimer() {
+    timer.innerText = sec + "sec left";
+    sec--;
+    if (sec == -1) {
+        clearInterval(time);
+        alert("Time out!! :(");
+    }
 }
-
-// Variables
-var startButton = document.querySelector("#start-button");
-var nextButton = document.querySelector("#next-button");
-var hiddenElements = document.querySelector(".hide");
-var nextButton = document.querySelector("#next-button");
-let currentQuestion;
-var questionElement = document.querySelector("#questions");
-var answersElement = document.querySelector("#answers");
 
 // Question Variables
 var questions = [
@@ -85,18 +100,34 @@ var questions = [
     ]},
     {
     question: "What does CSS stand for?",
-    options: ["Computerized Style Sheets", "Computer Software Security", "Cascading Style Sheets", "Cascading Software Sheets"],
-    answer: 2
-  }, {
+    options: [
+        {text: "Computerized Style Sheets", correct: false},
+        {text: "Computer Software Security", correct: false},
+        {text: "Cascading Style Sheets", correct: true},
+        {text: "Cascading Software Sheets", correct: false}
+    ]},
+    {
     question: "How would you create a pop-up on a web-page that requires a text entry?",
-    options: ["Alert", "Confirm", "Window", "Prompt"],
-    answer: 3
-  },{
+    options: [
+        {text: "Alert", correct: false},
+        {text: "Confirm", correct: false},
+        {text: "Window", correct: false},
+        {text: "Prompt", correct: true}
+    ]},
+    {
     question: "What symbol is used to reference a HTML element id in javascript?",
-    options: ["!", ".", "&", "#"],
-    answer: 3
-  }, {
+    options: [
+        {text: "!", correct: false},
+        {text: ".", correct: false},
+        {text: "&", correct: false},
+        {text: "#", correct: true}
+    ]}, 
+    {
     question: "Which library is used to help style the page in a grid format and assist with page responsiveness?",
-    options: ["JQuery", "Bootstrap", "Python", "C++"],
-    answer: 1
-  }];
+    options: [
+        {text: "JQuery", correct: false},
+        {text: "Bootstrap", correct: false},
+        {text: "Python", correct: false},
+        {text: "C++", correct: true}
+    ]}
+  ];
