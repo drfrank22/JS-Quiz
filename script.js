@@ -1,11 +1,7 @@
 // Javascript
-var startButton = document.querySelector("#start-button");
+
+// Click Event Listener to Start Quiz
 startButton.addEventListener("click", startQuiz);
-var hiddenElements = document.querySelector(".hide");
-var nextButton = document.querySelector("#next-button");
-let currentQuestion;
-var questionElement = document.querySelector("#questions");
-var answersElement = document.querySelector("#answers");
 
 // Start Quiz function to get started.
 function startQuiz () {
@@ -21,7 +17,16 @@ nextQuestion();
 
 
 function nextQuestion () {
-    populateQuestion(questions[currentQuestion])
+    resetAnswers ();
+    populateQuestion(questions[currentQuestion]);
+}
+
+function resetAnswers () {
+    nextButton.classList.add("hide");
+    while (answersElement.firstChild) {
+        answersElement.removeChild 
+        (answersElement.firstChild)
+    }
 }
 
 function populateQuestion (questions) {
@@ -29,23 +34,56 @@ function populateQuestion (questions) {
     questions.options.forEach(options => {
         var button = document.createElement("button");
         button.innerText = options.text;
-        button.classList.add("btn btn-primary")
-        button.addEventListener("click", chooseAnswer)
+        button.classList.add("btn", "btn-primary");
+        if (options.correct) {
+            button.dataset.correct = options.correct
+            }
+        button.addEventListener("click", chooseAnswer);
         answersElement.appendChild(button);
     });
 };
 
+
+
 function chooseAnswer (e) {
-    
+    var selectedAnswer = e.target
+    var correct = selectedAnswer.dataset.correct
+    setStatus(document.body, correct)
+    Array.from(answersElement.children).forEach(button => {
+    setStatus(button, button.dataset.correct)
+  })
+//   if (questions.length > currentQuestion + 1) {
+//     nextButton.classList.remove('hide')
+//   } else {
+//     startButton.innerText = 'Restart'
+//     startButton.classList.remove('hide')
+//   }
+};
+
+function setStatus () {
+
 }
 
+// Variables
+var startButton = document.querySelector("#start-button");
+var nextButton = document.querySelector("#next-button");
+var hiddenElements = document.querySelector(".hide");
+var nextButton = document.querySelector("#next-button");
+let currentQuestion;
+var questionElement = document.querySelector("#questions");
+var answersElement = document.querySelector("#answers");
 
-
-var questions = [{
+// Question Variables
+var questions = [
+    {
     question: "What programming language is used to make a web page dynamic?",
-    options: ["Javascript", "CSS", "HTML", "None of the Above"],
-    answer: 0
-  }, {
+    options: [
+        {text: "Javascript", correct: true},
+        {text: "CSS", correct: false},
+        {text: "HTML", correct: false},
+        {text: "None of the Above", correct: false}
+    ]},
+    {
     question: "What does CSS stand for?",
     options: ["Computerized Style Sheets", "Computer Software Security", "Cascading Style Sheets", "Cascading Software Sheets"],
     answer: 2
