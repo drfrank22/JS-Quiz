@@ -47,3 +47,15 @@ body{
 .hide {
     display: none;
 }
+
+.form-group {
+    width: 800px;
+    max-width: 80%;
+    background-color: teal;
+    border-radius: 5px;
+    
+}
+
+small {
+    color: black;
+}
