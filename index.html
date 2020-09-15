@@ -10,28 +10,51 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2" id="timer">TIMER</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4" id="timer">TIMER</div>
+        </div>
+        <div id="question-container" class="hide">
+            <div id="questions">Question</div>
+            <div id="answers" class="button-grid">
+              <button class="btn btn-primary">Answer 1</button>
+              <button class="btn btn-primary">Answer 2</button>
+              <button class="btn btn-primary">Answer 3</button>
+              <button class="btn btn-primary">Answer 4</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-button" class="start-btn btn btn-success">Start</button>
+            <button id="next-button" class="next-btn btn btn-success hide">Next</button>
+        </div>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4" id="score">SCORE</div>
+        </div>
     </div>
-    <div class="container" class="row">
-        <div id="questions-container" class="hide" class="row">
-            <div id="question" class="row" class ="col-md-12">Question</div>
+
+
+
+
+        <!-- <div id="questions-container"></div>
             <div class="row">
-                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 1</button>
-                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 2</button>
+                <div id="question" class ="col-md-12" class="hide">Question</div>
             </div>
             <div class="row">
-                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 3</button>
-                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 4</button>
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6" class="hide">Answer 1</button>
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6" class="hide">Answer 2</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6" class="hide">Answer 3</button>
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6" class="hide">Answer 4</button>
             </div>
             <div class="row">
                 <button type="button" class="btn btn-success btn-lg" class ="col-md-6" id="start-button">Start</button>
                 <button type="button" class="btn btn-success btn-lg" class ="col-md-6" id="next-button">Next</button>
-            </div>
-        </div>
+            </div> -->
+        
     </div>
-        <div></div>
     <script src="script.js"></script>
 
     
