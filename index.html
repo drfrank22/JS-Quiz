@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
+    <!-- Added in Style.CSS and Bootstrap -->
     <link href="styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/17b57f3916.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2" id="timer">TIMER</div>
+    </div>
+    <div class="container" class="row">
+        <div id="questions-container" class="hide" class="row">
+            <div id="question" class="row" class ="col-md-12">Question</div>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 1</button>
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 2</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 3</button>
+                <button type="button" class="btn btn-primary btn-lg" class ="col-md-6">Answer 4</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-success btn-lg" class ="col-md-6" id="start-button">Start</button>
+                <button type="button" class="btn btn-success btn-lg" class ="col-md-6" id="next-button">Next</button>
+            </div>
+        </div>
+    </div>
+        <div></div>
     <script src="script.js"></script>
 
     

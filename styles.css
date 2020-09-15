@@ -1,1 +1,32 @@
 /* CSS */
+
+.btn {
+    padding: 10px;
+    margin: 10px;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background-color: teal;
+}
+
+.container {
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: teal;
+    height: 50vh;
+    width: 50vw;
+}
+
+#timer {
+    text-align: center;
+}
+
+#question {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
