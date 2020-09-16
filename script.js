@@ -13,14 +13,16 @@ var sec = 60;
 var score = document.querySelector("#score");
 var timer = document.querySelector("#timer");
 var gameScore = 0
+var submitButton = document.querySelector("#submit-button");
 
-// Event Listeners for Start and Next Buttons
+// Event Listeners
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", () => {
     currentQuestion++
     nextQuestion()
 });
 logScoreButton.addEventListener("click", logScore);
+// submitButton.addEventListener("click", storeName);
 
 // Start Quiz function to get started.
 function startQuiz () {
@@ -33,19 +35,13 @@ nextQuestion();
 setInterval(myTimer, 1000)
 }
 
+// Move to the next question
 function nextQuestion () {
     resetAnswers ();
     populateQuestion(questions[currentQuestion]);
 }
 
-function resetAnswers () {
-    nextButton.classList.add("hide");
-    while (answersElement.firstChild) {
-        answersElement.removeChild 
-        (answersElement.firstChild)
-    }
-}
-
+// Create the question
 function populateQuestion (questions) {
     questionElement.innerText = questions.question
     questions.options.forEach(options => {
@@ -60,6 +56,16 @@ function populateQuestion (questions) {
     });
 };
 
+// Remove placeholder answer buttons
+function resetAnswers () {
+    nextButton.classList.add("hide");
+    while (answersElement.firstChild) {
+        answersElement.removeChild 
+        (answersElement.firstChild)
+    }
+}
+
+// Choose an answer
 function chooseAnswer (e) {
     var selectedAnswer = e.target
     var correct = selectedAnswer.dataset.correct
@@ -74,15 +80,12 @@ function chooseAnswer (e) {
   }
 };
 
-var correct = true;
-
 function setStatus (element, correct) {
     if (correct) {
         gameScore++;
-        score.innerText = "Score " + gameScore;   
+        score.innerHTML = "Score " + gameScore;   
     }
     else {
-        gameScore--;
         score.innerText = "Score " + gameScore;
     }
 };
@@ -91,14 +94,19 @@ function myTimer() {
     timer.innerText = sec + "sec left";
     sec--;
     if (sec == -1) {
-        clearInterval(myTimer);
+        clearTimeout (myTimer);
         alert("Time out!! :(");
+        return;
     }
 }
 
 function logScore () {
 
 }
+
+// function storeName () {
+
+// }
 
 // Question Variables
 var questions = [
